@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Армянская кухня — Вкус тысячелетий</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --terracotta: #C2703E;
+            --terracotta-dark: #A85D32;
+            --pomegranate: #9B2335;
+            --pomegranate-dark: #7A1C2A;
+            --gold: #C9A227;
+            --gold-muted: #D4AF37;
+            --beige: #F5E6D3;
+            --beige-light: #FDF8F3;
+            --deep-green: #2D5A4A;
+            --deep-green-dark: #1E3D32;
+            --text-dark: #2C2420;
+            --text-light: #5A4F4A;
+            --white: #FFFFFF;
+            --shadow: rgba(44, 36, 32, 0.15);
+            --shadow-dark: rgba(44, 36, 32, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--beige-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Armenian Ornament Pattern Background */
+        .ornament-bg {
+            position: relative;
+        }
+
+        .ornament-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L35 15H25L30 5zM30 55L25 45H35L30 55zM5 30L15 25V35L5 30zM55 30L45 35V25L55 30zM15 15L20 20L15 25L10 20L15 15zM45 15L50 20L45 25L40 20L45 15zM15 45L20 40L25 45L20 50L15 45zM45 45L40 40L45 35L50 40L45 45z' fill='%23C2703E' fill-opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(253, 248, 243, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px var(--shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(253, 248, 243, 0.98);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--pomegranate);
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--terracotta);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--terracotta);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .burger span {
+            width: 25px;
+            height: 3px;
+            background: var(--terracotta);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -7px);
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(253, 248, 243, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--beige) 0%, var(--beige-light) 50%, #E8D5C4 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='40' stroke='%23C2703E' stroke-width='1' fill='none' opacity='0.1'/%3E%3Ccircle cx='50' cy='50' r='30' stroke='%239B2335' stroke-width='1' fill='none' opacity='0.08'/%3E%3Ccircle cx='50' cy='50' r='20' stroke='%23C9A227' stroke-width='1' fill='none' opacity='0.06'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--terracotta);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--pomegranate);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards 0.2s;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards 0.4s;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards 0.6s;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--terracotta);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(194, 112, 62, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(194, 112, 62, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--deep-green);
+            border: 2px solid var(--deep-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--deep-green);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .hero-decoration {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .hero-decoration i {
+            font-size: 2rem;
+            color: var(--terracotta);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-muted), var(--gold));
+            color: var(--text-dark);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            color: var(--pomegranate);
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* History Section */
+        .history {
+            background: var(--white);
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .history-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px var(--shadow-dark);
+        }
+
+        .history-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .history-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: -20px;
+            bottom: -20px;
+            border: 3px solid var(--gold-muted);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .history-content h3 {
+            font-size: 1.8rem;
+            color: var(--terracotta);
+            margin-bottom: 20px;
+        }
+
+        .history-content p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 1.05rem;
+        }
+
+        .history-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .history-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .history-feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--beige), var(--beige-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .history-feature-icon i {
+            font-size: 1.3rem;
+            color: var(--terracotta);
+        }
+
+        .history-feature h4 {
+            font-size: 1rem;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+        }
+
+        .history-feature p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* Dishes Section */
+        .dishes {
+            background: linear-gradient(180deg, var(--beige-light) 0%, var(--beige) 100%);
+        }
+
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .dish-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px var(--shadow-dark);
+        }
+
+        .dish-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dish-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .dish-card:hover .dish-image img {
+            transform: scale(1.1);
+        }
+
+        .dish-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(155, 35, 53, 0.8) 0%, transparent 60%);
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dish-card:hover .dish-image-overlay {
+            opacity: 1;
+        }
+
+        .dish-image-overlay span {
+            color: var(--white);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dish-content {
+            padding: 25px;
+        }
+
+        .dish-content h3 {
+            font-size: 1.4rem;
+            color: var(--pomegranate);
+            margin-bottom: 10px;
+        }
+
+        .dish-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .dish-meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--beige);
+        }
+
+        .dish-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .dish-meta i {
+            color: var(--terracotta);
+        }
+
+        /* Recipes Section */
+        .recipes {
+            background: var(--white);
+        }
+
+        .recipes-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: 2px solid var(--terracotta);
+            background: transparent;
+            color: var(--terracotta);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: var(--terracotta);
+            color: var(--white);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .recipe-card {
+            background: var(--beige-light);
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .recipe-image {
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .recipe-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .recipe-details {
+            padding: 40px;
+        }
+
+        .recipe-details h3 {
+            font-size: 1.8rem;
+            color: var(--pomegranate);
+            margin-bottom: 15px;
+        }
+
+        .recipe-details > p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .recipe-meta-info {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .recipe-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .recipe-meta-item i {
+            color: var(--terracotta);
+            font-size: 1.1rem;
+        }
+
+        .recipe-section-title {
+            font-size: 1.1rem;
+            color: var(--deep-green);
+            margin-bottom: 15px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .recipe-section-title i {
+            color: var(--gold);
+        }
+
+        .ingredients-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .ingredients-list li {
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--beige);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ingredients-list li::before {
+            content: '◆';
+            color: var(--terracotta);
+            font-size: 0.6rem;
+        }
+
+        .steps-list {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .steps-list li {
+            counter-increment: step;
+            padding: 12px 0;
+            padding-left: 45px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .steps-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+            background: var(--terracotta);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: linear-gradient(180deg, var(--beige) 0%, var(--beige-light) 100%);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(155, 35, 53, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--deep-green);
+            color: var(--beige-light);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-about .logo {
+            color: var(--beige-light);
+            margin-bottom: 20px;
+        }
+
+        .footer-about .logo-icon {
+            color: var(--gold-muted);
+        }
+
+        .footer-about p {
+            color: rgba(245, 230, 211, 0.8);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--beige-light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--terracotta);
+            transform: translateY(-3px);
+        }
+
+        .footer h4 {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--gold-muted);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(245, 230, 211, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-muted);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: rgba(245, 230, 211, 0.8);
+        }
+
+        .contact-info i {
+            color: var(--gold-muted);
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom p {
+            color: rgba(245, 230, 211, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 36, 32, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--beige);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: var(--pomegranate);
+            color: var(--white);
+        }
+
+        .modal-image {
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-content {
+            padding: 40px;
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            color: var(--pomegranate);
+            margin-bottom: 15px;
+        }
+
+        .modal-content > p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+        }
+
+        .modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: var(--terracotta);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .lightbox-nav:hover {
+            background: var(--terracotta);
+        }
+
+        .lightbox-prev {
+            left: 30px;
+        }
+
+        .lightbox-next {
+            right: 30px;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .history-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .history-image {
+                order: -1;
+            }
+
+            .history-image img {
+                height: 350px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .recipe-card {
+                grid-template-columns: 1fr;
+            }
+
+            .recipe-image {
+                min-height: 250px;
+            }
+
+            .recipe-details {
+                padding: 25px;
+            }
+
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .history-features {
+                grid-template-columns: 1fr;
+            }
+
+            .dishes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tabs {
+                gap: 10px;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#home" class="logo">
+                <i class="fas fa-mortar-pestle logo-icon"></i>
+                <span class="logo-text">Армянская Кухня</span>
+            </a>
+            <nav class="nav">
+                <a href="#home">Главная</a>
+                <a href="#history">История</a>
+                <a href="#dishes">Блюда</a>
+                <a href="#recipes">Рецепты</a>
+                <a href="#gallery">Галерея</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <div class="burger" id="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="#home">Главная</a>
+        <a href="#history">История</a>
+        <a href="#dishes">Блюда</a>
+        <a href="#recipes">Рецепты</a>
+        <a href="#gallery">Галерея</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero ornament-bg" id="home">
+        <div class="hero-content">
+            <span class="hero-badge">✦ Культурное наследие Армении ✦</span>
+            <h1>Армянская кухня: Вкус тысячелетий</h1>
+            <p class="hero-subtitle">
+                Откройте для себя богатейшие кулинарные традиции одной из древнейших цивилизаций мира. 
+                Армянская кухня — это история, любовь и гостеприимство в каждом блюде.
+            </p>
+            <div class="hero-buttons">
+                <a href="#dishes" class="btn btn-primary">
+                    <i class="fas fa-utensils"></i>
+                    Открыть блюда
+                </a>
+                <a href="#history" class="btn btn-secondary">
+                    <i class="fas fa-book-open"></i>
+                    Узнать историю
+                </a>
+            </div>
+        </div>
+        <div class="hero-decoration">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history ornament-bg" id="history">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Наследие веков</span>
+                <h2 class="section-title">История и традиции</h2>
+                <p class="section-subtitle">
+                    Армянская кухня — живой памятник культуры, насчитывающей более 3000 лет
+                </p>
+            </div>
+            <div class="history-grid">
+                <div class="history-image reveal">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=500&fit=crop" alt="Традиционные армянские блюда на столе">
+                </div>
+                <div class="history-content reveal">
+                    <h3>Древние корни армянской кулинарии</h3>
+                    <p>
+                        Армянская кухня — одна из древнейших в мире. Её история тесно переплетена с историей армянского народа, 
+                        который на протяжении тысячелетий сохранял и передавал кулинарные секреты из поколения в поколение.
+                    </p>
+                    <p>
+                        Особое место в армянской культуре занимает лаваш — тонкий пресный хлеб, включённый в список нематериального 
+                        культурного наследия ЮНЕСКО. Лаваш символизирует жизнь, мудрость и единство семьи.
+                    </p>
+                    <p>
+                        Армянское гостеприимство — это целая философия. Гость в армянском доме — священен, и его всегда встречают 
+                        богато накрытым столом с множеством закусок, свежих трав и ароматного хлеба.
+                    </p>
+                    <div class="history-features">
+                        <div class="history-feature">
+                            <div class="history-feature-icon">
+                                <i class="fas fa-wheat-awn"></i>
+                            </div>
+                            <div>
+                                <h4>Лаваш</h4>
+                                <p>Наследие ЮНЕСКО с 2014 года</p>
+                            </div>
+                        </div>
+                        <div class="history-feature">
+                            <div class="history-feature-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <h4>Травы</h4>
+                                <p>Более 300 видов диких трав</p>
+                            </div>
+                        </div>
+                        <div class="history-feature">
+                            <div class="history-feature-icon">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <div>
+                                <h4>Тонир</h4>
+                                <p>Традиционная глиняная печь</p>
+                            </div>
+                        </div>
+                        <div class="history-feature">
+                            <div class="history-feature-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h4>Гостеприимство</h4>
+                                <p>Священная традиция народа</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dishes Section -->
+    <section class="dishes" id="dishes">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Кулинарные шедевры</span>
+                <h2 class="section-title">Традиционные блюда</h2>
+                <p class="section-subtitle">
+                    Познакомьтесь с жемчужинами армянской кухни, каждая из которых хранит историю народа
+                </p>
+            </div>
+            <div class="dishes-grid">
+                <!-- Dolma -->
+                <div class="dish-card reveal" data-dish="dolma">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1583528306385-8ba0e7c53b4c?w=400&h=300&fit=crop" alt="Армянская долма в виноградных листьях">
+                        <div class="dish-image-overlay">
+                            <span><i class="fas fa-eye"></i> Смотреть рецепт</span>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <h3>Долма</h3>
+                        <p>Нежные голубцы из виноградных листьев с ароматной начинкой из мясного фарша, риса и пряных трав.</p>
+                        <div class="dish-meta">
+                            <span><i class="fas fa-clock"></i> 2 часа</span>
+                            <span><i class="fas fa-fire"></i> Средняя</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Khash -->
+                <div class="dish-card reveal" data-dish="khash">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop" alt="Армянский хаш - традиционный суп">
+                        <div class="dish-image-overlay">
+                            <span><i class="fas fa-eye"></i> Смотреть рецепт</span>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <h3>Хаш</h3>
+                        <p>Древнейший армянский суп из говяжьих ног, который готовят всю ночь и подают рано утром с чесноком и лавашем.</p>
+                        <div class="dish-meta">
+                            <span><i class="fas fa-clock"></i> 8-10 часов</span>
+                            <span><i class="fas fa-fire"></i> Сложная</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lavash -->
+                <div class="dish-card reveal" data-dish="lavash">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&h=300&fit=crop" alt="Армянский лаваш - традиционный хлеб">
+                        <div class="dish-image-overlay">
+                            <span><i class="fas fa-eye"></i> Смотреть рецепт</span>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <h3>Лаваш</h3>
+                        <p>Тончайший пресный хлеб, выпекаемый в тонире. Символ армянской культуры, включённый в наследие ЮНЕСКО.</p>
+                        <div class="dish-meta">
+                            <span><i class="fas fa-clock"></i> 1.5 часа</span>
+                            <span><i class="fas fa-fire"></i> Средняя</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gata -->
+                <div class="dish-card reveal" data-dish="gata">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=400&h=300&fit=crop" alt="Армянская гата - сладкая выпечка">
+                        <div class="dish-image-overlay">
+                            <span><i class="fas fa-eye"></i> Смотреть рецепт</span>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <h3>Гата</h3>
+                        <p>Традиционная сладкая выпечка с нежной начинкой из масла и сахара. Непременный атрибут праздников.</p>
+                        <div class="dish-meta">
+                            <span><i class="fas fa-clock"></i> 2 часа</span>
+                            <span><i class="fas fa-fire"></i> Средняя</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basturma -->
+                <div class="dish-card reveal" data-dish="basturma">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&h=300&fit=crop" alt="Армянская бастурма - вяленое мясо">
+                        <div class="dish-image-overlay">
+                            <span><i class="fas fa-eye"></i> Смотреть рецепт</span>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <h3>Бастурма</h3>
+                        <p>Вяленая говядина в ароматной оболочке из чамана — смеси пажитника, чеснока и красного перца.</p>
+                        <div class="dish-meta">
+                            <span><i class="fas fa-clock"></i> 3 недели</span>
+                            <span><i class="fas fa-fire"></i> Сложная</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Khorovats -->
+                <div class="dish-card reveal" data-dish="khorovats">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=400&h=300&fit=crop" alt="Армянский хоровац - шашлык">
+                        <div class="dish-image-overlay">
+                            <span><i class="fas fa-eye"></i> Смотреть рецепт</span>
+                        </div>
+                    </div>
+                    <div class="dish-content">
+                        <h3>Хоровац</h3>
+                        <p>Армянский шашлык из сочного мяса на углях. Искусство приготовления передаётся от отца к сыну.</p>
+                        <div class="dish-meta">
+                            <span><i class="fas fa-clock"></i> 3 часа</span>
+                            <span><i class="fas fa-fire"></i> Средняя</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recipes Section -->
+    <section class="recipes ornament-bg" id="recipes">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Готовим вместе</span>
+                <h2 class="section-title">Популярные рецепты</h2>
+                <p class="section-subtitle">
+                    Подробные рецепты для приготовления традиционных армянских блюд дома
+                </p>
+            </div>
+            <div class="recipes-container">
+                <div class="tabs reveal">
+                    <button class="tab-btn active" data-tab="dolma-recipe">Долма</button>
+                    <button class="tab-btn" data-tab="lavash-recipe">Лаваш</button>
+                    <button class="tab-btn" data-tab="gata-recipe">Гата</button>
+                </div>
+
+                <!-- Dolma Recipe -->
+                <div class="tab-content active" id="dolma-recipe">
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1583528306385-8ba0e7c53b4c?w=500&h=400&fit=crop" alt="Приготовление армянской долмы">
+                        </div>
+                        <div class="recipe-details">
+                            <h3>Долма по-армянски</h3>
+                            <p>Классический рецепт армянской долмы в виноградных листьях с мясной начинкой.</p>
+                            <div class="recipe-meta-info">
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 часа</span>
+                                </div>
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span>6 порций</span>
+                                </div>
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Средняя</span>
+                                </div>
+                            </div>
+                            <div class="recipe-section-title">
+                                <i class="fas fa-list"></i> Ингредиенты
+                            </div>
+                            <ul class="ingredients-list">
+                                <li>500 г говяжьего фарша</li>
+                                <li>100 г риса</li>
+                                <li>40-50 виноградных листьев</li>
+                                <li>2 луковицы</li>
+                                <li>Зелень (кинза, базилик, мята)</li>
+                                <li>Соль, перец по вкусу</li>
+                            </ul>
+                            <div class="recipe-section-title">
+                                <i class="fas fa-list-ol"></i> Приготовление
+                            </div>
+                            <ol class="steps-list">
+                                <li>Смешайте фарш с промытым рисом, мелко нарезанным луком и зеленью.</li>
+                                <li>Виноградные листья обдайте кипятком и остудите.</li>
+                                <li>Заворачивайте начинку в листья конвертиком.</li>
+                                <li>Уложите долму плотными рядами в кастрюлю.</li>
+                                <li>Залейте водой, придавите тарелкой и тушите 45 минут.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lavash Recipe -->
+                <div class="tab-content" id="lavash-recipe">
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=500&h=400&fit=crop" alt="Приготовление армянского лаваша">
+                        </div>
+                        <div class="recipe-details">
+                            <h3>Армянский лаваш</h3>
+                            <p>Традиционный тонкий хлеб, который можно приготовить даже без тонира — на обычной сковороде.</p>
+                            <div class="recipe-meta-info">
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>1.5 часа</span>
+                                </div>
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span>10 листов</span>
+                                </div>
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Средняя</span>
+                                </div>
+                            </div>
+                            <div class="recipe-section-title">
+                                <i class="fas fa-list"></i> Ингредиенты
+                            </div>
+                            <ul class="ingredients-list">
+                                <li>500 г муки высшего сорта</li>
+                                <li>250 мл горячей воды</li>
+                                <li>1 чайная ложка соли</li>
+                                <li>1 столовая ложка растительного масла</li>
+                            </ul>
+                            <div class="recipe-section-title">
+                                <i class="fas fa-list-ol"></i> Приготовление
+                            </div>
+                            <ol class="steps-list">
+                                <li>Смешайте муку с солью, добавьте горячую воду и масло.</li>
+                                <li>Замесите эластичное тесто и дайте отдохнуть 30 минут.</li>
+                                <li>Разделите на шарики и раскатайте очень тонко.</li>
+                                <li>Выпекайте на сухой раскалённой сковороде по 30 секунд с каждой стороны.</li>
+                                <li>Готовый лаваш сбрызните водой и накройте полотенцем.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gata Recipe -->
+                <div class="tab-content" id="gata-recipe">
+                    <div class="recipe-card">
+                        <div class="recipe-image">
+                            <img src="https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=500&h=400&fit=crop" alt="Приготовление армянской гаты">
+                        </div>
+                        <div class="recipe-details">
+                            <h3>Гата армянская</h3>
+                            <p>Сладкая слоёная выпечка с нежной начинкой хориз — символ армянского гостеприимства.</p>
+                            <div class="recipe-meta-info">
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>2 часа</span>
+                                </div>
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span>8 порций</span>
+                                </div>
+                                <div class="recipe-meta-item">
+                                    <i class="fas fa-signal"></i>
+                                    <span>Средняя</span>
+                                </div>
+                            </div>
+                            <div class="recipe-section-title">
+                                <i class="fas fa-list"></i> Ингредиенты
+                            </div>
+                            <ul class="ingredients-list">
+                                <li>400 г муки</li>
+                                <li>200 г сливочного масла</li>
+                                <li>150 мл мацуна (или кефира)</li>
+                                <li>200 г сахарной пудры (для начинки)</li>
+                                <li>100 г топлёного масла (для начинки)</li>
+                                <li>1 яйцо для смазывания</li>
+                            </ul>
+                            <div class="recipe-section-title">
+                                <i class="fas fa-list-ol"></i> Приготовление
+                            </div>
+                            <ol class="steps-list">
+                                <li>Смешайте муку с холодным маслом до крошки, добавьте мацун и замесите тесто.</li>
+                                <li>Для начинки смешайте муку, сахарную пудру и топлёное масло.</li>
+                                <li>Раскатайте тесто, выложите начинку и сверните рулетом.</li>
+                                <li>Нарежьте на кусочки, смажьте яйцом и сделайте узор вилкой.</li>
+                                <li>Выпекайте при 180°C около 30 минут до золотистого цвета.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Фотогалерея</span>
+                <h2 class="section-title">Красота армянской кухни</h2>
+                <p class="section-subtitle">
+                    Насладитесь визуальным путешествием по миру армянских кулинарных традиций
+                </p>
+            </div>
+            <div class="gallery-grid reveal">
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop" alt="Разнообразие армянских блюд">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&h=400&fit=crop" alt="Традиционное армянское застолье">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&h=400&fit=crop" alt="Свежие овощи и зелень">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop" alt="Армянская выпечка">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=400&fit=crop" alt="Салаты и закуски">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=600&h=400&fit=crop" alt="Специи и приправы">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=400&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=400&fit=crop" alt="Армянский завтрак">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-search-plus"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacts">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#home" class="logo">
+                        <i class="fas fa-mortar-pestle logo-icon"></i>
+                        <span class="logo-text">Армянская Кухня</span>
+                    </a>
+                    <p>
+                        Наш проект посвящён сохранению и популяризации богатейших кулинарных традиций Армении. 
+                        Мы делимся рецептами, историями и секретами армянской кухни.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Навигация</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="#history"><i class="fas fa-chevron-right"></i> История</a></li>
+                        <li><a href="#dishes"><i class="fas fa-chevron-right"></i> Блюда</a></li>
+                        <li><a href="#recipes"><i class="fas fa-chevron-right"></i> Рецепты</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Галерея</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Блюда</h4>
+                    <ul class="footer-links">
+                        <li><a href="#dishes"><i class="fas fa-chevron-right"></i> Долма</a></li>
+                        <li><a href="#dishes"><i class="fas fa-chevron-right"></i> Хаш</a></li>
+                        <li><a href="#dishes"><i class="fas fa-chevron-right"></i> Лаваш</a></li>
+                        <li><a href="#dishes"><i class="fas fa-chevron-right"></i> Гата</a></li>
+                        <li><a href="#dishes"><i class="fas fa-chevron-right"></i> Хоровац</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Контакты</h4>
+                    <ul class="footer-links contact-info">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>info@armeniancuisine.ru</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (495) 123-45-67</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Москва, ул. Армянский пер., 2</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Армянская Кухня. Все права защищены.</p>
+                <p>Сделано с <i class="fas fa-heart" style="color: var(--pomegranate);"></i> к армянским традициям</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-image">
+                <img src="" alt="" id="modalImage">
+            </div>
+            <div class="modal-content">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <div class="modal-grid">
+                    <div>
+                        <div class="recipe-section-title">
+                            <i class="fas fa-list"></i> Ингредиенты
+                        </div>
+                        <ul class="ingredients-list" id="modalIngredients"></ul>
+                    </div>
+                    <div>
+                        <div class="recipe-section-title">
+                            <i class="fas fa-list-ol"></i> Приготовление
+                        </div>
+                        <ol class="steps-list" id="modalSteps"></ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <img src="" alt="" id="lightboxImage">
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <script>
+        // Dish Data
+        const dishesData = {
+            dolma: {
+                title: 'Долма',
+                image: 'https://images.unsplash.com/photo-1583528306385-8ba0e7c53b4c?w=800&h=400&fit=crop',
+                description: 'Долма — одно из самых известных и любимых блюд армянской кухни. Нежные голубцы из виноградных листьев с ароматной начинкой из мясного фарша, риса и пряных трав. Подаётся с мацуном (кисломолочным продуктом) и чесноком.',
+                ingredients: [
+                    '500 г говяжьего или бараньего фарша',
+                    '100 г круглого риса',
+                    '40-50 маринованных виноградных листьев',
+                    '2 средние луковицы',
+                    'Пучок кинзы, базилика и мяты',
+                    '1 чайная ложка сушёного базилика',
+                    'Соль и чёрный перец по вкусу',
+                    '2 столовые ложки томатной пасты'
+                ],
+                steps: [
+                    'Промойте рис и замочите на 15 минут. Мелко нарежьте лук и зелень.',
+                    'Смешайте фарш с рисом, луком, нарезанной зеленью, специями и томатной пастой.',
+                    'Виноградные листья промойте и обдайте кипятком. Удалите черешки.',
+                    'На матовую сторону листа положите ложку начинки. Заверните конвертиком, подгибая края.',
+                    'Выложите долму плотными рядами в кастрюлю швом вниз. Прижмите тарелкой.',
+                    'Залейте тёплой водой, чтобы покрыла долму. Тушите на медленном огне 45-50 минут.'
+                ]
+            },
+            khash: {
+                title: 'Хаш',
+                image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800&h=400&fit=crop',
+                description: 'Хаш — древнейшее армянское блюдо, ритуальный суп из говяжьих или бараньих ног. Готовится всю ночь и подаётся рано утром. Традиционно хаш едят руками, макая лаваш в бульон и добавляя много чеснока.',
+                ingredients: [
+                    '2 кг говяжьих ног (рульки)',
+                    '500 г рубца (по желанию)',
+                    '2 головки чеснока',
+                    'Соль по вкусу',
+                    'Свежий армянский лаваш',
+                    'Редька (по желанию)',
+                    'Сушёный базилик'
+                ],
+                steps: [
+                    'Говяжьи ноги тщательно очистите, опалите и вымочите в холодной воде 24 часа, меняя воду.',
+                    'Положите ноги в большую кастрюлю, залейте холодной водой на 15-20 см выше мяса.',
+                    'Доведите до кипения, снимите пену. Убавьте огонь до минимума.',
+                    'Варите 8-10 часов (можно ночь), пока мясо не будет отходить от костей.',
+                    'Подавайте горячим с толчёным чесноком, солью и сухим лавашем отдельно.',
+                    'Каждый добавляет чеснок и соль по вкусу в свою тарелку и ест с лавашем.'
+                ]
+            },
+            lavash: {
+                title: 'Лаваш',
+                image: 'https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&h=400&fit=crop',
+                description: 'Лаваш — тончайший пресный хлеб, символ армянской культуры. В 2014 году включён в список нематериального культурного наследия ЮНЕСКО. Традиционно выпекается в тонире — глиняной печи.',
+                ingredients: [
+                    '500 г муки высшего сорта',
+                    '250-280 мл горячей воды',
+                    '1 чайная ложка соли',
+                    '1 столовая ложка растительного масла'
+                ],
+                steps: [
+                    'Просейте муку горкой, сделайте углубление. Добавьте соль.',
+                    'Влейте горячую воду и масло. Замесите гладкое эластичное тесто.',
+                    'Накройте полотенцем и дайте отдохнуть 30-40 минут.',
+                    'Разделите тесто на шарики размером с яйцо. Раскатайте очень тонко.',
+                    'Выпекайте на сухой раскалённой сковороде по 20-30 секунд с каждой стороны.',
+                    'Готовый лаваш сразу сбрызните водой и накройте полотенцем для мягкости.'
+                ]
+            },
+            gata: {
+                title: 'Гата',
+                image: 'https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800&h=400&fit=crop',
+                description: 'Гата — традиционная армянская сладкая выпечка с нежной начинкой хориз. Существует множество региональных вариантов гаты. Это непременный атрибут праздников и свадеб.',
+                ingredients: [
+                    '400 г муки для теста',
+                    '200 г сливочного масла',
+                    '150 мл мацуна или кефира',
+                    '1/2 чайной ложки соды',
+                    '200 г сахарной пудры для начинки',
+                    '150 г топлёного масла для начинки',
+                    '100 г муки для начинки',
+                    '1 яйцо для смазывания'
+                ],
+                steps: [
+                    'Для теста: смешайте муку с холодным маслом до крошки. Добавьте мацун с содой.',
+                    'Замесите мягкое тесто. Уберите в холодильник на 30 минут.',
+                    'Для начинки (хориз): смешайте муку, сахарную пудру и топлёное масло до однородности.',
+                    'Раскатайте тесто, распределите начинку. Сверните рулетом и нарежьте.',
+                    'Выложите на противень, смажьте яйцом. Сделайте узор вилкой.',
+                    'Выпекайте при 180°C около 30-35 минут до золотистого цвета.'
+                ]
+            },
+            basturma: {
+                title: 'Бастурма',
+                image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=800&h=400&fit=crop',
+                description: 'Бастурма — вяленая говядина в ароматной оболочке из чамана. Этот деликатес готовится несколько недель. Тонко нарезанная бастурма — изысканная закуска к вину.',
+                ingredients: [
+                    '1 кг говяжьей вырезки',
+                    '200 г крупной соли для засола',
+                    '100 г молотого пажитника (чаман)',
+                    '50 г молотого красного перца',
+                    '30 г молотого чеснока',
+                    '1 чайная ложка чёрного перца',
+                    'Вода для обмазки'
+                ],
+                steps: [
+                    'Мясо натрите солью со всех сторон. Положите под гнёт на 3 дня в холодильник.',
+                    'Промойте мясо, обсушите. Заверните в марлю и положите под пресс ещё на 3 дня.',
+                    'Смешайте пажитник, перец и чеснок с водой до пасты. Это чаман.',
+                    'Обмажьте мясо чаманом слоем 5 мм. Дайте подсохнуть.',
+                    'Повесьте в проветриваемом месте на 2-3 недели до полного высыхания.',
+                    'Готовая бастурма должна быть твёрдой снаружи и тёмно-красной внутри.'
+                ]
+            },
+            khorovats: {
+                title: 'Хоровац',
+                image: 'https://images.unsplash.com/photo-1558030006-450675393462?w=800&h=400&fit=crop',
+                description: 'Хоровац — армянский шашлык, искусство приготовления которого передаётся от отца к сыну. Готовится исключительно мужчинами на углях из виноградной лозы или фруктовых деревьев.',
+                ingredients: [
+                    '1 кг свиной шеи или баранины',
+                    '3-4 луковицы',
+                    'Соль и чёрный перец',
+                    'Базилик сушёный',
+                    '100 мл сухого красного вина (по желанию)',
+                    'Овощи для гриля: помидоры, перцы, баклажаны',
+                    'Свежая зелень для подачи'
+                ],
+                steps: [
+                    'Нарежьте мясо крупными кусками. Лук нарежьте кольцами.',
+                    'Смешайте мясо с луком, солью, перцем и базиликом. Маринуйте 2-3 часа.',
+                    'Насадите мясо на шампуры, чередуя с кольцами лука.',
+                    'Готовьте на раскалённых углях, часто переворачивая, 15-20 минут.',
+                    'Овощи запекайте целиком на решётке до мягкости.',
+                    'Подавайте горячим с запечёнными овощами, зеленью и лавашем.'
+                ]
+            }
+        };
+
+        // DOM Elements
+        const burger = document.getElementById('burger');
+        const mobileNav = document.getElementById('mobileNav');
+        const header = document.getElementById('header');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        const dishCards = document.querySelectorAll('.dish-card');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const navLinks = document.querySelectorAll('.nav a, .mobile-nav a');
+
+        let currentGalleryIndex = 0;
+        const galleryImages = Array.from(galleryItems).map(item => item.dataset.src);
+
+        // Burger Menu
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile nav on link click
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Smooth scroll for navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    const offsetTop = targetSection.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Tabs functionality
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+                
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Dish Modal
+        dishCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const dishId = card.dataset.dish;
+                const dish = dishesData[dishId];
+                
+                if (dish) {
+                    document.getElementById('modalTitle').textContent = dish.title;
+                    document.getElementById('modalDescription').textContent = dish.description;
+                    document.getElementById('modalImage').src = dish.image;
+                    document.getElementById('modalImage').alt = dish.title;
+                    
+                    const ingredientsList = document.getElementById('modalIngredients');
+                    ingredientsList.innerHTML = dish.ingredients.map(ing => `<li>${ing}</li>`).join('');
+                    
+                    const stepsList = document.getElementById('modalSteps');
+                    stepsList.innerHTML = dish.steps.map(step => `<li>${step}</li>`).join('');
+                    
+                    modalOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        modalClose.addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) closeModal();
+        });
+
+        // Lightbox
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentGalleryIndex = index;
+                lightboxImage.src = item.dataset.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+            lightboxImage.src = galleryImages[currentGalleryIndex];
+        });
+
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+            lightboxImage.src = galleryImages[currentGalleryIndex];
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') lightboxPrev.click();
+                if (e.key === 'ArrowRight') lightboxNext.click();
+            }
+            if (modalOverlay.classList.contains('active') && e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll(); // Initial check
+    </script>
+</body>
+</html>
